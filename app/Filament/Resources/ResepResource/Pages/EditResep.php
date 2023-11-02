@@ -2,9 +2,12 @@
 
 namespace App\Filament\Resources\ResepResource\Pages;
 
-use App\Filament\Resources\ResepResource;
 use Filament\Actions;
+use App\Models\Resep;
+
+use Illuminate\Support\Facades\Storage;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\ResepResource;
 
 class EditResep extends EditRecord
 {
@@ -13,7 +16,13 @@ class EditResep extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+            ->after(function (Resep $record) {
+                // delete single
+                if ($record->foto) {
+                    Storage::disk('public')->delete($record->foto);
+                }
+            }),
         ];
     }
 
