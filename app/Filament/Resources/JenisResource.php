@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use stdClass;
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Jenis;
+use App\Models\jenis;
 use App\Models\Category;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -22,7 +22,7 @@ use App\Filament\Resources\JenisResource\RelationManagers;
 
 class JenisResource extends Resource
 {
-    protected static ?string $model = Jenis::class;
+    protected static ?string $model = jenis::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Referensi';
